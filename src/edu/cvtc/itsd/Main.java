@@ -37,11 +37,17 @@ public class Main {
   private static class InputFilter extends DocumentFilter {
     private static final int MAX_LENGTH = 8;
 
+    JButton b;
+    public void setButton(JButton button)
+    {
+      b = button;
+    }
     @Override
     public void insertString(FilterBypass fb, int offset, String stringToAdd, AttributeSet attr)
         throws BadLocationException
     {
-      if (fb.getDocument() != null) {
+      if (fb.getDocument() != null && fb.getDocument().getLength() == MAX_LENGTH) {
+        b.setVisible(true);
         super.insertString(fb, offset, stringToAdd, attr);
       }
       else {
@@ -265,6 +271,11 @@ public class Main {
     updateButton.addActionListener(new Update());
     updateButton.setForeground(Color.green);
     panelMain.add(updateButton);
+    //Turning Button visibility off on start until valid input achived in InputFilter
+    updateButton.setVisible(false);
+
+    //Giving access to JButton in InputFilter
+    filter.setButton(updateButton);
 
     panelMain.add(Box.createVerticalGlue());
 

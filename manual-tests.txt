@@ -72,3 +72,12 @@ Use `./build.sh` to build CiCo and `./run.sh` to run it if using the command lin
 ## Expected results
 * Shouldn't allow you to click Update after step 2.
 * Shouldn't allow you to enter any further digits after you hit the max of 8 and the Update buttons allows you to click it.
+
+
+Module 5: Close App Ticket 502
+## Test steps
+1. Build and run CiCo.
+2. Click the "x" in the top right corner of the application window to exit out of the application.
+
+##Expected results
+* The application should close and fully shut down in Gitbash.

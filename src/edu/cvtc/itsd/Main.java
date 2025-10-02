@@ -236,6 +236,8 @@ public class Main {
     frame.setMinimumSize(new Dimension(320, 240));
     frame.setPreferredSize(new Dimension(640, 480));
     frame.setMaximumSize(new Dimension(640, 480));
+    frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
 
     // Collect each "card" panel in a deck.
     deck = new JPanel(new CardLayout());
@@ -248,6 +250,8 @@ public class Main {
     panelMain.setPreferredSize(new Dimension(640, 480));
     panelMain.setMaximumSize(new Dimension(640, 480));
     panelMain.setBackground(Color.black);
+
+
 
     panelMain.add(Box.createVerticalGlue());
     JLabel labelDirective = new JLabel("Scan card", JLabel.LEADING);
@@ -271,6 +275,9 @@ public class Main {
     //updateButton.addActionListener(new Update());
     //updateButton.setForeground(Color.green);
     //panelMain.add(updateButton);
+
+    //Giving access to JButton in InputFilter
+    filter.setButton(updateButton);
 
     panelMain.add(Box.createVerticalGlue());
 

@@ -35,40 +35,40 @@ public class Main {
   // Internal classes ///////////////////////////////////////////////////////////
   // InputFilter manages user input to the card number field.
   private static class InputFilter extends DocumentFilter {
-    private static final int MAX_LENGTH = 8;
+      private static final int MAX_LENGTH = 8;
 
-    JButton b;
-    public void setButton(JButton button)
-    {
-      b = button;
-    }
-    @Override
-    public void insertString(FilterBypass fb, int offset, String stringToAdd, AttributeSet attr)
-        throws BadLocationException
-    {
-      if (fb.getDocument() != null && fb.getDocument().getLength() == MAX_LENGTH) {
-        b.setEnabled(true);
-        super.insertString(fb, offset, stringToAdd, attr);
+      @Override
+      public void insertString(FilterBypass fb, int offset, String stringToAdd, AttributeSet attr)
+              throws BadLocationException {
+          if (fb.getDocument() != null) {
+              super.insertString(fb, offset, stringToAdd, attr);
+              checkComplete(fb);
+          } else {
+              Toolkit.getDefaultToolkit().beep();
+          }
       }
-      else {
-        Toolkit.getDefaultToolkit().beep();
-      }
-    }
 
-    @Override
-    public void replace(FilterBypass fb, int offset, int lengthToDelete, String stringToAdd, AttributeSet attr)
-        throws BadLocationException
-    {
-      if (fb.getDocument() != null) {
-        super.replace(fb, offset, lengthToDelete, stringToAdd, attr);
+      @Override
+      public void replace(FilterBypass fb, int offset, int lengthToDelete, String stringToAdd, AttributeSet attr)
+              throws BadLocationException {
+          if (fb.getDocument() != null) {
+              super.replace(fb, offset, lengthToDelete, stringToAdd, attr);
+              checkComplete(fb);
+          } else {
+              Toolkit.getDefaultToolkit().beep();
+          }
       }
-      else {
-        Toolkit.getDefaultToolkit().beep();
+
+      private void checkComplete(FilterBypass fb) throws BadLocationException {
+          String currentInput = fb.getDocument().getText(0, fb.getDocument().getLength());
+          if (currentInput.length() == MAX_LENGTH) {
+              // Auto-submit after last digit entered
+              SwingUtilities.invokeLater(Main::processCard);
+          }
       }
-    }
   }
 
-  // Lookup the card information after button press ///////////////////////////
+    // Lookup the card information after button press ///////////////////////////
   public static class Update implements ActionListener {
     public void actionPerformed(ActionEvent evt) {
       Main.processCard();
@@ -270,11 +270,11 @@ public class Main {
     fieldNumber.setForeground(Color.magenta);
     panelMain.add(fieldNumber);
 
-    JButton updateButton = new JButton("Update");
-    updateButton.setAlignmentX(JComponent.CENTER_ALIGNMENT);
-    updateButton.addActionListener(new Update());
-    updateButton.setForeground(Color.green);
-    panelMain.add(updateButton);
+    //JButton updateButton = new JButton("Update");
+    //updateButton.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+    //updateButton.addActionListener(new Update());
+    //updateButton.setForeground(Color.green);
+    //panelMain.add(updateButton);
 
     //Giving access to JButton in InputFilter
     filter.setButton(updateButton);

@@ -35,29 +35,29 @@ public class Main {
   // Internal classes ///////////////////////////////////////////////////////////
   // InputFilter manages user input to the card number field.
   private static class InputFilter extends DocumentFilter {
-    private static final int MAX_LENGTH = 8;
+      private static final int MAX_LENGTH = 8;
 
-    @Override
-    public void insertString(FilterBypass fb, int offset, String stringToAdd, AttributeSet attr)
-            throws BadLocationException {
-        if (fb.getDocument() != null) {
-            super.insertString(fb, offset, stringToAdd, attr);
-            checkComplete(fb);
-        } else {
-            Toolkit.getDefaultToolkit().beep();
-        }
-    }
+      @Override
+      public void insertString(FilterBypass fb, int offset, String stringToAdd, AttributeSet attr)
+              throws BadLocationException {
+          if (fb.getDocument() != null) {
+              super.insertString(fb, offset, stringToAdd, attr);
+              checkComplete(fb);
+          } else {
+              Toolkit.getDefaultToolkit().beep();
+          }
+      }
 
-    @Override
-    public void replace(FilterBypass fb, int offset, int lengthToDelete, String stringToAdd, AttributeSet attr)
-            throws BadLocationException {
-        if (fb.getDocument() != null) {
-            super.replace(fb, offset, lengthToDelete, stringToAdd, attr);
-            checkComplete(fb);
-        } else {
-            Toolkit.getDefaultToolkit().beep();
-        }
-    }
+      @Override
+      public void replace(FilterBypass fb, int offset, int lengthToDelete, String stringToAdd, AttributeSet attr)
+              throws BadLocationException {
+          if (fb.getDocument() != null) {
+              super.replace(fb, offset, lengthToDelete, stringToAdd, attr);
+              checkComplete(fb);
+          } else {
+              Toolkit.getDefaultToolkit().beep();
+          }
+      }
 
       private void checkComplete(FilterBypass fb) throws BadLocationException {
           String currentInput = fb.getDocument().getText(0, fb.getDocument().getLength());
@@ -68,7 +68,7 @@ public class Main {
       }
   }
 
-  // Lookup the card information after button press ///////////////////////////
+    // Lookup the card information after button press ///////////////////////////
   public static class Update implements ActionListener {
     public void actionPerformed(ActionEvent evt) {
       Main.processCard();

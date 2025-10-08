@@ -2,7 +2,7 @@ Use `./build.sh` to build CiCo and `./run.sh` to run it if using the command lin
 
 # Module 2: Sample test for the happy path. 
 
-## Test steps
+## Test  steps
 1. Build and run CiCo.
 2. Enter 00000000 into the field and click Update.
 3. Wait 11 seconds.
@@ -10,6 +10,10 @@ Use `./build.sh` to build CiCo and `./run.sh` to run it if using the command lin
 ## Expected results:
 * The status panel should appear after step 2.
 * The main panel should appear after step 3.
+* Main application panel color changed from black to
+light lavender color
+* Input text field changed to purple color
+* Font color changed to white
 
 # Module 2: Sample test for invalid card numbers.
 
@@ -60,6 +64,18 @@ Use `./build.sh` to build CiCo and `./run.sh` to run it if using the command lin
 
 ## Expected results
 * Should display "Developer" for the user name.
+
+# Module 6: Color change for UI
+
+Test steps
+1. Build and run CiCo.
+
+## Expected results:
+* Main application panel color changed from black to
+light lavender color
+* Input text field changed to purple color
+* Font color changed to white
+
 
 # Ticket 601 – Auto-submit card input
 

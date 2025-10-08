@@ -77,4 +77,34 @@ light lavender color
 * Font color changed to white
 
 
+# Ticket 601 – Auto-submit card input
 
+## Test steps
+1. Build and run CiCo.
+2. Enter a full valid card number (e.g., 00000000) into the field without pressing Enter or clicking Update.
+
+## Expected results
+* The system should automatically submit once the final digit is typed.
+* The Update button should no longer be present.
+
+
+
+#Module 4: Card Digits Ticket 402
+## Tests steps
+1. Build and run CiCo.
+2. Enter 0 into the field and click Update.
+3. Wait for status panel to close.
+4. Enter 0000000000 into the field and click Update.
+
+## Expected results
+* Shouldn't allow you to click Update after step 2.
+* Shouldn't allow you to enter any further digits after you hit the max of 8 and the Update buttons allows you to click it.
+
+
+Module 5: Close App Ticket 502
+## Test steps
+1. Build and run CiCo.
+2. Click the "x" in the top right corner of the application window to exit out of the application.
+
+##Expected results
+* The application should close and fully shut down in Gitbash.
